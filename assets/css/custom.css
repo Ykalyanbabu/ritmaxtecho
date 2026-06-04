@@ -7,3 +7,7 @@ header.header img {
 section.bg-repeat.stp-30.hero_bg_gradient.overflow-hidden {
     padding-top: 140px;
 }
+
+img.object-fit.max-sm\:max-h-\[300px\] {
+    margin-top: 80px;
+}
