@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - RITMAX</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../../assets/css/variables.css" rel="stylesheet">
+  <link href="../../assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-brand-panel">
+      <div class="auth-brand-content">
+        <div class="auth-brand-logo"><i class="fas fa-wallet"></i></div>
+        <h1 class="mb-3">RITMAX</h1>
+        <p class="opacity-75 mb-4">Enterprise payroll management built for Indian businesses. PF, ESI, TDS, and Telangana compliance — from our Hyderabad headquarters.</p>
+        <div class="d-flex justify-content-center gap-4 opacity-75">
+          <div><i class="fas fa-shield-halved fa-2x mb-2 d-block"></i><small>Secure</small></div>
+          <div><i class="fas fa-bolt fa-2x mb-2 d-block"></i><small>Fast</small></div>
+          <div><i class="fas fa-chart-line fa-2x mb-2 d-block"></i><small>Analytics</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-form-panel">
+      <div class="auth-form-container">
+        <img src="../../../assets/images/logo.png" alt="RITMAX Logo" class="auth-form-logo mb-4" style="
+    width: 42%;
+    margin-left: -12px;
+">
+        <h2>Welcome back</h2>
+        <p class="auth-subtitle">Sign in to your account to continue</p>
+        <form data-validate novalidate action="../../index.html">
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <div class="input-group-icon">
+              <i class="fas fa-envelope"></i>
+              <input type="email" class="form-control" required placeholder="you@payrollpro.in" value="admin@payrollpro.in">
+            </div>
+            <div class="invalid-feedback">Please enter a valid email.</div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <label class="form-label mb-0">Password</label>
+              <a href="forgot-password.html" class="small text-decoration-none">Forgot password?</a>
+            </div>
+            <div class="input-group-icon">
+              <i class="fas fa-lock"></i>
+              <input type="password" class="form-control" required placeholder="Enter password" value="password">
+              <button type="button" class="password-toggle" aria-label="Toggle password"><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="invalid-feedback">Password is required.</div>
+          </div>
+          <div class="mb-4 form-check">
+            <input type="checkbox" class="form-check-input" id="remember" checked>
+            <label class="form-check-label" for="remember">Remember me for 30 days</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 py-2 mb-3"><i class="fas fa-right-to-bracket me-2"></i>Sign In</button>
+        </form>
+        <p class="text-center text-muted small mb-0">Don't have an account? <a href="#" class="text-decoration-none">Contact your administrator</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roles & Permissions - RITMAX</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../../assets/css/variables.css" rel="stylesheet">
+  <link href="../../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="app-body" data-page="settings-roles" data-base-path="../../" data-breadcrumbs='[{"label":"Home","href":"../../index.html"},{"label":"Settings"},{"label":"Roles & Permissions"}]'>
+  <div class="app-wrapper">
+    <div id="sidebar-container"></div>
+    <div class="app-main">
+      <div id="header-container"></div>
+      <div class="app-content">
+        <div class="page-header d-flex flex-wrap justify-content-between gap-3"><div><h1 class="page-title">Roles &amp; Permissions</h1><p class="page-subtitle">Define role-based access for system modules.</p></div><button class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i> Add Role</button></div>
+        <div class="content-card"><div class="content-card-body"><div class="table-responsive"><table class="table permission-matrix data-table"><thead><tr><th class="module-name">Module</th><th>Admin</th><th>HR Manager</th><th>Payroll Officer</th><th>Employee</th></tr></thead><tbody><tr><td class="module-name">Dashboard</td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td></tr><tr><td class="module-name">Employees</td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input"></td></tr><tr><td class="module-name">RITMAXcessing</td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input"></td></tr><tr><td class="module-name">Reports</td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input"></td></tr><tr><td class="module-name">Settings</td><td><input type="checkbox" class="form-check-input" checked></td><td><input type="checkbox" class="form-check-input"></td><td><input type="checkbox" class="form-check-input"></td><td><input type="checkbox" class="form-check-input"></td></tr></tbody></table></div><div class="mt-3"><button class="btn btn-primary"><i class="fas fa-save me-1"></i> Save Permissions</button></div></div></div>
+      </div>
+      <div id="footer-container"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/layout.js"></script>
+  <script src="../../assets/js/app.js"></script>
+</body>
+</html>
