@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ritmax.Application\Ritmax.Application.csproj" />
+    <ProjectReference Include="..\Ritmax.Infrastructure\Ritmax.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <!-- Build React SPA into wwwroot before .NET build (Visual Studio F5) -->
+  <Target Name="BuildReactApp" BeforeTargets="Build">
+    <Exec Command="npm run build" WorkingDirectory="$(MSBuildProjectDirectory)\..\..\client\ritmax-ui" IgnoreExitCode="false" />
+  </Target>
+
+</Project>

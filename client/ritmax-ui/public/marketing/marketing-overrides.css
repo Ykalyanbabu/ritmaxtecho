@@ -1,0 +1,89 @@
+/* Marketing site overrides — keep Tailwind layout isolated from Bootstrap admin styles */
+
+.marketing-site {
+  font-family: inherit;
+}
+
+.marketing-site header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marketing-site header nav li {
+  list-style: none;
+}
+
+.marketing-site .container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .marketing-site .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .marketing-site .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marketing-site .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .marketing-site .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .marketing-site .container {
+    max-width: 1536px;
+  }
+}
+
+.marketing-site header.header {
+  position: relative;
+  z-index: 100;
+}
+
+.marketing-site .subMenuClose {
+  max-height: 0;
+}
+
+.marketing-site .subMenuOpen {
+  max-height: 24rem;
+}
+
+.marketing-site .mobileMenuBgOpen {
+  opacity: 0.3;
+  transform: translateY(0);
+}
+
+.marketing-site .mobileMenuBgClose {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.marketing-site .mobileMenuOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.marketing-site .mobileMenuClose {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100%);
+}
