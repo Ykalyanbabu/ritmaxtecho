@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { MARKETING_IMG } from '@/shared/constants/marketing'
 
 export function LoginPage() {
   return (
@@ -32,7 +33,7 @@ export function LoginPage() {
       <div className="auth-form-panel">
         <div className="auth-form-container">
           <img
-            src="/assets/images/logo.png"
+            src={`${MARKETING_IMG}/logo.png`}
             alt="RITMAX Logo"
             className="auth-form-logo mb-4"
             style={{ width: '42%', marginLeft: -12 }}

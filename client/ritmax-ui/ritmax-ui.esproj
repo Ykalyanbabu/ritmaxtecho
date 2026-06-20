@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.SDK/1.0.5128675">
+
+  <PropertyGroup>
+    <!-- `npm run dev` starts the Vite dev server when this project is launched from VS. -->
+    <StartupCommand>npm run dev</StartupCommand>
+    <JavaScriptTestRoot>src\</JavaScriptTestRoot>
+    <JavaScriptTestFramework>Vitest</JavaScriptTestFramework>
+
+    <!--
+      Ritmax.Web.csproj already runs `npm run build` into wwwroot before the .NET build,
+      so this project must NOT build again on solution build (avoids double-build + wwwroot file locks).
+      This project node exists only to surface the full client tree in Solution Explorer.
+    -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <BuildCommand></BuildCommand>
+    <ProductionBuildCommand></ProductionBuildCommand>
+  </PropertyGroup>
+
+</Project>
