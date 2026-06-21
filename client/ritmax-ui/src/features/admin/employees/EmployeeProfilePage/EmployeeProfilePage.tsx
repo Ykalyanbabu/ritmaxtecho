@@ -1,19 +1,87 @@
 import { ContentCard } from '@/shared/components/ContentCard'
 import { StatusBadge } from '@/shared/components/StatusBadge'
+import type { EmployeeDetail } from '@/shared/types/employee'
+import { useEmployeeProfile } from './useEmployeeProfile'
+
+const salaryFormatter = new Intl.NumberFormat('en-IN', {
+  style: 'currency',
+  currency: 'INR',
+  maximumFractionDigits: 0,
+})
+
+function formatDate(value?: string | null): string {
+  if (!value) return '—'
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return '—'
+  return date.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+}
+
+function headerStatusClass(status: string): string {
+  switch (status.toLowerCase()) {
+    case 'active':
+      return 'bg-success'
+    case 'onleave':
+      return 'bg-warning text-dark'
+    default:
+      return 'bg-secondary'
+  }
+}
+
+function statusLabel(status: string): string {
+  switch (status.toLowerCase()) {
+    case 'active':
+      return 'Active'
+    case 'onleave':
+      return 'On Leave'
+    case 'inactive':
+      return 'Inactive'
+    default:
+      return status || 'Unknown'
+  }
+}
 
 export function EmployeeProfilePage() {
+  const { employee, loading, error } = useEmployeeProfile()
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center py-5">
+        <span className="spinner-border text-primary" role="status" aria-hidden="true" />
+        <span className="ms-3 text-muted">Loading profile…</span>
+      </div>
+    )
+  }
+
+  if (error || !employee) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        {error ?? 'Employee profile could not be loaded.'}
+      </div>
+    )
+  }
+
+  return <ProfileContent employee={employee} />
+}
+
+function ProfileContent({ employee }: { employee: EmployeeDetail }) {
+  const headerMeta = [employee.designation, employee.department, employee.location]
+    .filter(Boolean)
+    .join(' · ')
+
   return (
     <>
       <div className="profile-header">
         <div className="d-flex flex-wrap align-items-center gap-4">
-          <div className="profile-avatar-lg">PS</div>
+          <div className="profile-avatar-lg">{employee.initials}</div>
           <div className="flex-grow-1">
-            <h2 className="mb-1">Priya Sharma</h2>
-            <p className="mb-2 opacity-75">Senior Developer · Engineering · HITEC City, Hyderabad</p>
+            <h2 className="mb-1">{employee.fullName}</h2>
+            <p className="mb-2 opacity-75">{headerMeta}</p>
             <div className="d-flex flex-wrap gap-2">
-              <span className="badge bg-light text-dark">EMP-001</span>
-              <span className="badge bg-success">Active</span>
-              <span className="badge bg-light text-dark">Full-time</span>
+              <span className="badge bg-light text-dark">{employee.employeeCode}</span>
+              <span className={`badge ${headerStatusClass(employee.status)}`}>
+                {statusLabel(employee.status)}
+              </span>
+              <span className="badge bg-light text-dark">{employee.employmentType}</span>
             </div>
           </div>
           <div className="d-flex gap-2">
@@ -33,19 +101,19 @@ export function EmployeeProfilePage() {
             <div className="info-list">
               <div className="info-item">
                 <span className="info-label">Email</span>
-                <span className="info-value">priya.s@payrollpro.in</span>
+                <span className="info-value">{employee.email}</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Mobile</span>
-                <span className="info-value">+91 98765 43210</span>
+                <span className="info-value">{employee.phone || '—'}</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Location</span>
-                <span className="info-value">Madhapur, Hyderabad, Telangana 500081</span>
+                <span className="info-value">{employee.location || '—'}</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Date of Birth</span>
-                <span className="info-value">15 Mar 1990</span>
+                <span className="info-value">{formatDate(employee.dateOfBirth)}</span>
               </div>
             </div>
           </ContentCard>
@@ -53,19 +121,19 @@ export function EmployeeProfilePage() {
             <div className="info-list">
               <div className="info-item">
                 <span className="info-label">Join Date</span>
-                <span className="info-value">10 Jan 2022</span>
+                <span className="info-value">{formatDate(employee.joinDate)}</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Manager</span>
-                <span className="info-value">Rajesh Kumar</span>
+                <span className="info-value">{employee.managerName || '—'}</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Base Salary</span>
-                <span className="info-value">₹85,000/mo</span>
+                <span className="info-value">{salaryFormatter.format(employee.baseSalary)}/mo</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Pay Frequency</span>
-                <span className="info-value">Monthly</span>
+                <span className="info-value">{employee.payFrequency}</span>
               </div>
             </div>
           </ContentCard>

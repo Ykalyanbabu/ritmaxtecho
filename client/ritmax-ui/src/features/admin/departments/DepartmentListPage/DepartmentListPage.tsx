@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ContentCard } from '@/shared/components/ContentCard'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { StatCard } from '@/shared/components/StatCard'
+import { useDashboardCharts } from '@/shared/hooks/useDashboardCharts'
 
 const departments = [
   { icon: 'fa-code', name: 'Engineering', head: 'Rajesh Kumar', employees: 85, costCenter: 'CC-1001' },
@@ -12,6 +13,8 @@ const departments = [
 ]
 
 export function DepartmentListPage() {
+  const { departmentRef } = useDashboardCharts()
+
   return (
     <>
       <PageHeader
@@ -29,13 +32,13 @@ export function DepartmentListPage() {
         <div className="col-lg-8">
           <ContentCard title="Department Headcount">
             <div className="chart-container">
-              <canvas id="departmentChart" />
+              <canvas ref={departmentRef} />
             </div>
           </ContentCard>
         </div>
-        <div className="col-lg-4">
-          <StatCard value="6" label="Total Departments" className="mb-3" />
-          <StatCard value="248" label="Total Employees" />
+        <div className="col-lg-4 d-flex flex-column gap-3">
+          <StatCard value="6" label="Total Departments" className="h-auto" />
+          <StatCard value="248" label="Total Employees" className="h-auto" />
         </div>
       </div>
 

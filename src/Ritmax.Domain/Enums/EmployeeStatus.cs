@@ -1,6 +1,6 @@
 namespace Ritmax.Domain.Enums;
 
-public enum EmployeeStatus
+public enum EmployeeStatus : byte
 {
     Active = 0,
     Inactive = 1,

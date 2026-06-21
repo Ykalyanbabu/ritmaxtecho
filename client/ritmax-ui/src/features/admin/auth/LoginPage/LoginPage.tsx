@@ -1,7 +1,38 @@
-import { Link } from 'react-router-dom'
+import { useState, type FormEvent } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { MARKETING_IMG } from '@/shared/constants/marketing'
+import { useAuth } from '@/shared/auth/AuthContext'
 
 export function LoginPage() {
+  const { login } = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = (location.state as { from?: string } | null)?.from ?? '/admin/employees/profile'
+
+  const [identifier, setIdentifier] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setError(null)
+    setSubmitting(true)
+    try {
+      const user = await login(identifier.trim(), password)
+      if (!user.isPasswordUpdated) {
+        navigate('/admin/auth/change-password', { replace: true })
+      } else {
+        navigate(from, { replace: true })
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to sign in. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <div className="auth-wrapper">
       <div className="auth-brand-panel">
@@ -38,26 +69,37 @@ export function LoginPage() {
             className="auth-form-logo mb-4"
             style={{ width: '42%', marginLeft: -12 }}
           />
-          <h2>Welcome back</h2>
+          <h2>Welcome</h2>
           <p className="auth-subtitle">Sign in to your account to continue</p>
-          <form data-validate noValidate>
+          <form onSubmit={handleSubmit} noValidate>
+            {error && (
+              <div className="alert alert-danger py-2" role="alert">
+                {error}
+              </div>
+            )}
             <div className="mb-3">
-              <label className="form-label">Email Address</label>
+              <label className="form-label" htmlFor="login-identifier">
+                Username or Email
+              </label>
               <div className="input-group-icon">
-                <i className="fas fa-envelope" />
+                <i className="fas fa-user" />
                 <input
-                  type="email"
+                  id="login-identifier"
+                  type="text"
                   className="form-control"
                   required
-                  placeholder="you@payrollpro.in"
-                  defaultValue="admin@payrollpro.in"
+                  autoComplete="username"
+                  placeholder="Enter your username or email"
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
                 />
               </div>
-              <div className="invalid-feedback">Please enter a valid email.</div>
             </div>
             <div className="mb-3">
               <div className="d-flex justify-content-between align-items-center mb-1">
-                <label className="form-label mb-0">Password</label>
+                <label className="form-label mb-0" htmlFor="login-password">
+                  Password
+                </label>
                 <Link to="/admin/auth/forgot-password" className="small text-decoration-none">
                   Forgot password?
                 </Link>
@@ -65,17 +107,24 @@ export function LoginPage() {
               <div className="input-group-icon">
                 <i className="fas fa-lock" />
                 <input
-                  type="password"
+                  id="login-password"
+                  type={showPassword ? 'text' : 'password'}
                   className="form-control"
                   required
+                  autoComplete="current-password"
                   placeholder="Enter password"
-                  defaultValue="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="button" className="password-toggle" aria-label="Toggle password">
-                  <i className="fas fa-eye" />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  aria-label="Toggle password"
+                  onClick={() => setShowPassword((v) => !v)}
+                >
+                  <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`} />
                 </button>
               </div>
-              <div className="invalid-feedback">Password is required.</div>
             </div>
             <div className="mb-4 form-check">
               <input type="checkbox" className="form-check-input" id="remember" defaultChecked />
@@ -83,10 +132,19 @@ export function LoginPage() {
                 Remember me for 30 days
               </label>
             </div>
-            <Link to="/admin" className="btn btn-primary w-100 py-2 mb-3">
-              <i className="fas fa-right-to-bracket me-2" />
-              Sign In
-            </Link>
+            <button type="submit" className="btn btn-primary w-100 py-2 mb-3" disabled={submitting}>
+              {submitting ? (
+                <>
+                  <span className="spinner-border spinner-border-sm me-2" aria-hidden="true" />
+                  Signing in...
+                </>
+              ) : (
+                <>
+                  <i className="fas fa-right-to-bracket me-2" />
+                  Sign In
+                </>
+              )}
+            </button>
           </form>
           <p className="text-center text-muted small mb-0">
             Don&apos;t have an account?{' '}

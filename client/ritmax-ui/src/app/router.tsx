@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { ProtectedRoute } from '@/shared/auth/ProtectedRoute'
 import { MarketingLayout } from '@/shared/layouts/MarketingLayout'
 import { AdminLayoutRoute } from '@/shared/layouts/AdminLayout'
 import { AdminAuthLayout } from '@/shared/layouts/AdminAuthLayout'
@@ -96,6 +97,9 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    element: <ProtectedRoute />,
+    children: [
+  {
     path: '/admin',
     element: (
       <AdminLayoutRoute
@@ -135,6 +139,20 @@ export const router = createBrowserRouter([
   },
   {
     path: '/admin/employees/profile',
+    element: (
+      <AdminLayoutRoute
+        pageId="employees-list"
+        breadcrumbs={[
+          { label: 'Home', path: '/admin' },
+          { label: 'Employees', path: '/admin/employees' },
+          { label: 'Employee Profile' },
+        ]}
+      />
+    ),
+    children: [{ index: true, element: <EmployeeProfilePage /> }],
+  },
+  {
+    path: '/admin/employees/profile/:employeeId',
     element: (
       <AdminLayoutRoute
         pageId="employees-list"
@@ -454,6 +472,8 @@ export const router = createBrowserRouter([
       />
     ),
     children: [{ index: true, element: <NotificationsSettingsPage /> }],
+  },
+    ],
   },
   { path: '*', element: <Navigate to="/" replace /> },
 ])

@@ -10,5 +10,5 @@ CREATE TABLE [dbo].[AttendanceRecords]
     [UpdatedAt]  DATETIME2 (7) NULL,
     [IsDeleted]  BIT           NOT NULL CONSTRAINT [DF_AttendanceRecords_IsDeleted] DEFAULT (0),
     CONSTRAINT [PK_AttendanceRecords] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_AttendanceRecords_Employees] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employees] ([Id])
+    CONSTRAINT [FK_AttendanceRecords_Employee] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employee] ([Id])
 );

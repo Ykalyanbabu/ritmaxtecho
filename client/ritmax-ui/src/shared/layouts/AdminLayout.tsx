@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '@/shared/auth/AuthContext'
 import { currentUser, navSections, type Breadcrumb } from '@/shared/data/navigation'
 import { notifications as initialNotifications } from '@/shared/data/notifications'
 import { AdminStyles } from '@/shared/layouts/AdminStyles'
@@ -11,6 +12,22 @@ interface AdminLayoutProps {
 
 export function AdminLayout({ pageId, breadcrumbs }: AdminLayoutProps) {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { user, logout } = useAuth()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/admin/auth/login', { replace: true })
+  }
+
+  const displayName = user?.fullName?.trim() || currentUser.name
+  const displayRole = user?.role || currentUser.role
+  const initials = displayName
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('') || currentUser.initials
   const [sidebarCollapsed, setSidebarCollapsed] = useState(
     () => localStorage.getItem('sidebarCollapsed') === 'true',
   )
@@ -173,10 +190,10 @@ export function AdminLayout({ pageId, breadcrumbs }: AdminLayoutProps) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <div className="user-avatar">{currentUser.initials}</div>
+                  <div className="user-avatar">{initials}</div>
                   <div className="user-info">
-                    <span className="user-name">{currentUser.name}</span>
-                    <span className="user-role">{currentUser.role}</span>
+                    <span className="user-name">{displayName}</span>
+                    <span className="user-role">{displayRole}</span>
                   </div>
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
@@ -202,10 +219,14 @@ export function AdminLayout({ pageId, breadcrumbs }: AdminLayoutProps) {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item text-danger" to="/admin/auth/login">
+                    <button
+                      type="button"
+                      className="dropdown-item text-danger"
+                      onClick={handleLogout}
+                    >
                       <i className="fas fa-right-from-bracket me-2" />
                       Logout
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               </div>

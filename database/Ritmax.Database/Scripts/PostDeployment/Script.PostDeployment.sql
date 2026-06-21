@@ -1,4 +1,4 @@
 /*
     Post-Deployment Script Template
 */
-:r .\SeedData.sql
+:r ..\Data\SeedLookupData.sql

@@ -14,6 +14,6 @@ CREATE TABLE [dbo].[Payslips]
     [UpdatedAt]        DATETIME2 (7)   NULL,
     [IsDeleted]        BIT             NOT NULL CONSTRAINT [DF_Payslips_IsDeleted] DEFAULT (0),
     CONSTRAINT [PK_Payslips] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_Payslips_Employees] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employees] ([Id]),
+    CONSTRAINT [FK_Payslips_Employee] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employee] ([Id]),
     CONSTRAINT [FK_Payslips_PayrollRuns] FOREIGN KEY ([PayrollRunId]) REFERENCES [dbo].[PayrollRuns] ([Id])
 );

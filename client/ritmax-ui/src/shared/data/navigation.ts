@@ -20,10 +20,6 @@ export interface NavSection {
 
 export const navSections: NavSection[] = [
   {
-    section: 'Main',
-    items: [{ id: 'dashboard', icon: 'fa-gauge-high', label: 'Dashboard', path: '/admin' }],
-  },
-  {
     section: 'Workforce',
     items: [
       {

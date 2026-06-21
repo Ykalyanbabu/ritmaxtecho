@@ -9,5 +9,5 @@ CREATE TABLE [dbo].[PayrollRuns]
     [UpdatedAt] DATETIME2 (7)  NULL,
     [IsDeleted] BIT            NOT NULL CONSTRAINT [DF_PayrollRuns_IsDeleted] DEFAULT (0),
     CONSTRAINT [PK_PayrollRuns] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_PayrollRuns_Companies] FOREIGN KEY ([CompanyId]) REFERENCES [dbo].[Companies] ([Id])
+    CONSTRAINT [FK_PayrollRuns_Company] FOREIGN KEY ([CompanyId]) REFERENCES [dbo].[Company] ([Id])
 );

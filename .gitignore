@@ -12,6 +12,9 @@ publish/
 client/ritmax-ui/node_modules/
 client/ritmax-ui/dist/
 
+## User uploads (company logos, etc.)
+src/Ritmax.Web/uploads/
+
 ## IDE
 .idea/
 *.swp

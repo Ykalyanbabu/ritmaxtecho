@@ -11,5 +11,5 @@ CREATE TABLE [dbo].[LeaveRequests]
     [UpdatedAt]  DATETIME2 (7)  NULL,
     [IsDeleted]  BIT            NOT NULL CONSTRAINT [DF_LeaveRequests_IsDeleted] DEFAULT (0),
     CONSTRAINT [PK_LeaveRequests] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_LeaveRequests_Employees] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employees] ([Id])
+    CONSTRAINT [FK_LeaveRequests_Employee] FOREIGN KEY ([EmployeeId]) REFERENCES [dbo].[Employee] ([Id])
 );

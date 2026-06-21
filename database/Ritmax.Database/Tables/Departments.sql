@@ -8,5 +8,5 @@ CREATE TABLE [dbo].[Departments]
     [UpdatedAt]   DATETIME2 (7)  NULL,
     [IsDeleted]   BIT            NOT NULL CONSTRAINT [DF_Departments_IsDeleted] DEFAULT (0),
     CONSTRAINT [PK_Departments] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_Departments_Companies] FOREIGN KEY ([CompanyId]) REFERENCES [dbo].[Companies] ([Id])
+    CONSTRAINT [FK_Departments_Company] FOREIGN KEY ([CompanyId]) REFERENCES [dbo].[Company] ([Id])
 );
