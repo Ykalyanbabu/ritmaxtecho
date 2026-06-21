@@ -63,8 +63,8 @@ export function MarketingLayout() {
             <div className="flex justify-end items-center gap-2 sm:gap-6 xl:gap-10 font-medium max-sm:hidden">
               <div className="flex justify-between items-center gap-1">
                 <i className="ph ph-phone-call bg-s1 rounded-full text-s2 p-2 md:p-3 text-lg lg:text-2xl !leading-none" />
-                <a href="tel:+918008882119" className="max-xl:hidden">
-                  +91 80088 82119
+                <a href="tel:+919346882119" className="max-xl:hidden">
+                  +91 93468 82119
                 </a>
               </div>
               <Link
@@ -247,13 +247,13 @@ export function MarketingLayout() {
               </li>
               <li className="list-none">
                 <a
-                  href="tel:+918008882119"
+                  href="tel:+919346882119"
                   className="flex justify-start items-center gap-2 hover:text-white hover:translate-x-2 duration-500"
                 >
                   <span className="text-2xl pt-2">
                     <i className="ph ph-phone-call" />
                   </span>
-                  +91 80088 82119
+                  +91 93468 82119
                 </a>
               </li>
               <li className="list-none">
