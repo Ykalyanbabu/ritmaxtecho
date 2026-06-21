@@ -47,7 +47,7 @@ export function ContactPage() {
               <i className="ph-fill ph-phone-call" />
             </div>
             <h4 className="heading-4 pt-5 pb-2">Contact Us</h4>
-            <a href="tel:+918008882119">+91 80088 82119</a>
+            <a href="tel:+919346882119">+91 93468 82119</a>
           </div>
           <div className="flex flex-col justify-start items-start p-4 lg:p-8 bg-p1 text-white w-full col-span-12 sm:col-span-4 border border-p1 hover:bg-s2 hover:text-mainTextColor hover:border-mainTextColor duration-500 group">
             <div className="bg-white text-p1 text-2xl rounded-full p-4 group-hover:text-white group-hover:bg-mainTextColor duration-500 !leading-[0]">
