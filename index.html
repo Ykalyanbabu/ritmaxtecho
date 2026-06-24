@@ -13,8 +13,99 @@
     <link href="style.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>RITMAX</title>
-  
+  <style>
+.whatsapp-float{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 34px;
+    line-height: 60px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.3);
+    z-index: 9999;
+    text-decoration: none;
+    animation: whatsappPulse 2s infinite, whatsappBounce 2s infinite;
+}
+
+.whatsapp-float:hover{
+    animation-play-state: paused;
+    transform: scale(1.15);
+    color: #fff;
+}
+
+/* Ring Effect */
+.whatsapp-float::before{
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid #25D366;
+    border-radius: 50%;
+    animation: ring 2s infinite;
+}
+
+/* Pulse */
+@keyframes whatsappPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37,211,102,0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(37,211,102,0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37,211,102,0);
+    }
+}
+
+/* Bounce */
+@keyframes whatsappBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+/* Ring Animation */
+@keyframes ring {
+    0%{
+        transform: scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+.wa-tooltip{
+    position: fixed;
+    right: 70px;
+    bottom: 36px;
+    background: #25D366;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 20px 0px 0px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 9998;
+    animation: tooltipBlink 2s infinite;
+}
+
+@keyframes tooltipBlink{
+    0%,100%{opacity:1;}
+    50%{opacity:.5;}
+}
+</style>
   
 </head>
   <body>
@@ -2011,6 +2102,12 @@
     <i class="ph ph-arrow-up"></i>
   </span>
 </button>
+
+<!-- WhatsApp Floating Button -->
+<div class="wa-tooltip">Chat With Us</div>
+<a href="https://wa.me/919346882119" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
     <!-- Scroll To top Button End -->
 
