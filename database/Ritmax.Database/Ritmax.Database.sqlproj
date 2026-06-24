@@ -62,6 +62,7 @@
     <PostDeploy Include="Scripts\PostDeployment\Script.PostDeployment.sql" />
     <None Include="Scripts\Data\SeedLookupData.sql" />
     <Build Include="Tables\Employee.sql" />
+    <Build Include="Tables\EmployeeSalaryDetails.sql" />
     <Build Include="StoredProcedures\usp_Employee_GetByLogin.sql" />
   </ItemGroup>
   <ItemGroup>

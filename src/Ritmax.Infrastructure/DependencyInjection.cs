@@ -23,6 +23,7 @@ public static class DependencyInjection
 
         services.AddScoped<ICompanyService, CompanyService>();
         services.AddScoped<IEmployeeService, EmployeeService>();
+        services.AddScoped<ISalaryDetailService, SalaryDetailService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddSingleton<IPasswordHasher, BCryptPasswordHasher>();
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();

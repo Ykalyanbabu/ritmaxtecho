@@ -15,6 +15,7 @@ public class RitmaxDbContext : DbContext
     public DbSet<State> States => Set<State>();
     public DbSet<Department> Departments => Set<Department>();
     public DbSet<Employee> Employees => Set<Employee>();
+    public DbSet<EmployeeSalaryDetails> EmployeeSalaryDetails => Set<EmployeeSalaryDetails>();
     public DbSet<PayrollRun> PayrollRuns => Set<PayrollRun>();
     public DbSet<Payslip> Payslips => Set<Payslip>();
     public DbSet<PayslipLineItem> PayslipLineItems => Set<PayslipLineItem>();
@@ -60,6 +61,18 @@ public class RitmaxDbContext : DbContext
 
         modelBuilder.Entity<Employee>()
             .HasIndex(e => new { e.CompanyId, e.EmployeeCode })
+            .IsUnique();
+
+        modelBuilder.Entity<EmployeeSalaryDetails>().ToTable("EmployeeSalaryDetails");
+
+        modelBuilder.Entity<EmployeeSalaryDetails>()
+            .HasOne(s => s.Employee)
+            .WithMany()
+            .HasForeignKey(s => s.EmployeeId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<EmployeeSalaryDetails>()
+            .HasIndex(s => new { s.EmployeeId, s.Year, s.Month })
             .IsUnique();
 
         modelBuilder.Entity<UserRole>()

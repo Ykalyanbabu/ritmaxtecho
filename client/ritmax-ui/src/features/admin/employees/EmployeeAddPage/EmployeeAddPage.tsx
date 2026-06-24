@@ -19,12 +19,15 @@ type FormState = {
   joinDate: string
   departmentId: string
   designation: string
+  grade: string
   employmentType: string
   reportingManagerId: string
   baseSalary: string
   pan: string
   aadhaar: string
   uan: string
+  pfNumber: string
+  esiNumber: string
   bankName: string
   accountNumber: string
   ifscCode: string
@@ -44,12 +47,15 @@ const emptyForm: FormState = {
   joinDate: '',
   departmentId: '',
   designation: '',
+  grade: '',
   employmentType: '1',
   reportingManagerId: '',
   baseSalary: '',
   pan: '',
   aadhaar: '',
   uan: '',
+  pfNumber: '',
+  esiNumber: '',
   bankName: '',
   accountNumber: '',
   ifscCode: '',
@@ -77,12 +83,15 @@ function toRequest(form: FormState): CreateEmployeeRequest {
     joinDate: form.joinDate,
     departmentId: Number(form.departmentId),
     designation: form.designation.trim(),
+    grade: trimmed(form.grade),
     employmentType: Number(form.employmentType),
     reportingManagerId: form.reportingManagerId ? Number(form.reportingManagerId) : null,
     baseSalary: form.baseSalary ? Number(form.baseSalary) : 0,
     pan: trimmed(form.pan),
     aadhaar: trimmed(form.aadhaar),
     uan: trimmed(form.uan),
+    pfNumber: trimmed(form.pfNumber),
+    esiNumber: trimmed(form.esiNumber),
     bankName: trimmed(form.bankName),
     accountNumber: trimmed(form.accountNumber),
     ifscCode: trimmed(form.ifscCode),
@@ -315,6 +324,17 @@ export function EmployeeAddPage() {
                   </select>
                 </div>
                 <div className="col-md-6">
+                  <label className="form-label">Grade</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="e.g. L3, M1"
+                    maxLength={10}
+                    value={form.grade}
+                    onChange={update('grade')}
+                  />
+                </div>
+                <div className="col-md-6">
                   <label className="form-label">Reporting Manager</label>
                   <select className="form-select" value={form.reportingManagerId} onChange={update('reportingManagerId')}>
                     <option value="">Select manager</option>
@@ -407,6 +427,28 @@ export function EmployeeAddPage() {
                     placeholder="12-digit UAN"
                     value={form.uan}
                     onChange={update('uan')}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <label className="form-label">PF Number</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="e.g. APHYD2472433000"
+                    maxLength={100}
+                    value={form.pfNumber}
+                    onChange={update('pfNumber')}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <label className="form-label">ESI Number</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="ESI number"
+                    maxLength={100}
+                    value={form.esiNumber}
+                    onChange={update('esiNumber')}
                   />
                 </div>
               </div>
