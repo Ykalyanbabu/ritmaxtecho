@@ -654,7 +654,7 @@ video {
 @media (min-width: 1400px){
 
   .display-3{
-    font-size: 64px;
+    font-size: 36px;
   }
 }
 .display-4{
@@ -686,7 +686,7 @@ video {
 @media (min-width: 1200px){
 
   .display-4{
-    font-size: 54px;
+    font-size: 36px;
   }
 }
 .heading-1{
@@ -4748,3 +4748,12 @@ input[type="number"] {
   }
 }
 
+section.bg-softBg1.stp-30.sbp-30.overflow-hidden img {
+    width: 50%;
+    height: auto;
+    margin: auto;
+}
+h4.pt-4.heading-4 {
+    text-align: center;
+    font-size: 18px;
+}
