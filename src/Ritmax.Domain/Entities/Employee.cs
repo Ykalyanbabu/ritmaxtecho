@@ -24,6 +24,7 @@ public class Employee
     public DateOnly JoinDate { get; set; }
     public int DepartmentId { get; set; }
     public string Designation { get; set; } = string.Empty;
+    public string? Grade { get; set; }
     public byte EmploymentType { get; set; }
     public int? ReportingManagerId { get; set; }
     public EmployeeStatus Status { get; set; }
@@ -34,6 +35,8 @@ public class Employee
     public string? Pan { get; set; }
     public string? Aadhaar { get; set; }
     public string? Uan { get; set; }
+    public string? PfNumber { get; set; }
+    public string? EsiNumber { get; set; }
 
     // Bank details
     public string? BankName { get; set; }

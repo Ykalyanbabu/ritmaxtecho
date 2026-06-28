@@ -24,6 +24,7 @@ export interface CreateEmployeeRequest {
   joinDate: string
   departmentId: number
   designation: string
+  grade?: string | null
   employmentType: number
   reportingManagerId?: number | null
 
@@ -31,6 +32,8 @@ export interface CreateEmployeeRequest {
   pan?: string | null
   aadhaar?: string | null
   uan?: string | null
+  pfNumber?: string | null
+  esiNumber?: string | null
 
   bankName?: string | null
   accountNumber?: string | null

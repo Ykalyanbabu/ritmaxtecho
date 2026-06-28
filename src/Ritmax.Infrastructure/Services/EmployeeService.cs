@@ -144,6 +144,7 @@ public class EmployeeService : IEmployeeService
             JoinDate = request.JoinDate,
             DepartmentId = request.DepartmentId,
             Designation = request.Designation.Trim(),
+            Grade = NullIfBlank(request.Grade),
             EmploymentType = request.EmploymentType,
             ReportingManagerId = request.ReportingManagerId,
             Status = EmployeeStatus.Active,
@@ -153,6 +154,8 @@ public class EmployeeService : IEmployeeService
             Pan = NullIfBlank(request.Pan),
             Aadhaar = NullIfBlank(request.Aadhaar),
             Uan = NullIfBlank(request.Uan),
+            PfNumber = NullIfBlank(request.PfNumber),
+            EsiNumber = NullIfBlank(request.EsiNumber),
 
             BankName = NullIfBlank(request.BankName),
             AccountNumber = NullIfBlank(request.AccountNumber),

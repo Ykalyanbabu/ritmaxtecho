@@ -20,6 +20,7 @@ CREATE TABLE [dbo].[Employee]
     [JoinDate]           DATE             NOT NULL,
     [DepartmentId]       INT              NOT NULL,
     [Designation]        NVARCHAR (100)   NOT NULL,
+    [Grade]              NVARCHAR (10)    NULL,
     [EmploymentType]     TINYINT          NOT NULL,        -- 1=Full-time,2=Part-time,3=Contract,4=Intern
     [ReportingManagerId] INT              NULL,
     [Status]             TINYINT          NOT NULL,        -- maps EmployeeStatus enum
@@ -30,6 +31,8 @@ CREATE TABLE [dbo].[Employee]
     [Pan]                NVARCHAR (10)    NULL,
     [Aadhaar]            NVARCHAR (12)    NULL,            -- sensitive: encrypt at rest
     [Uan]                NVARCHAR (12)    NULL,
+    [PfNumber]           NVARCHAR (100)   NULL,
+    [EsiNumber]          NVARCHAR (100)   NULL,
 
     -- Bank details
     [BankName]           NVARCHAR (100)   NULL,
