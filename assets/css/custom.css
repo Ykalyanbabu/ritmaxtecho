@@ -11,3 +11,24 @@ section.bg-repeat.stp-30.hero_bg_gradient.overflow-hidden {
 img.object-fit.max-sm\:max-h-\[300px\] {
     margin-top: 80px;
 }
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 575.98px) {
+.pb-1.flex.justify-start.items-center.gap-3 {
+    width: 100%;
+}
+}
+
+/* Small Devices (Landscape Phones) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+.pb-1.flex.justify-start.items-center.gap-3 {
+    width: 100%;
+}
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+.pb-1.flex.justify-start.items-center.gap-3 {
+    width: 100%;
+}
+}
